@@ -1,0 +1,40 @@
+
+  /* Add this style to override the default active state background color */
+  .list-group-item.active {
+      background-color: transparent !important;
+      border: 1px solid black; /* Add a black border */
+  }
+
+  /* Optionally, you can remove the default list item border as well */
+  .list-group-item {
+      border: none;
+  }
+
+
+    .card-body a {
+        color: black; /* Set the default text color to black */
+        text-decoration: none; /* Remove underline */
+    }
+
+    .card-body a:hover {
+        color: black; /* Set the text color to black on hover */
+        text-decoration: none; /* Remove underline on hover */
+    }
+
+    th a {
+        color: black;
+        text-decoration: none; /* Optional: Remove underline if you don't want it */
+    }
+    
+  /* Increase specificity to override Bootstrap styles */
+.btn.btn-primary.custom--btn1,
+.btn.btn-primary.custom--btn1:focus,
+.btn.btn-primary.custom--btn1:active,
+.btn.btn-primary.custom--btn1:hover {
+    background-color: black;
+    border-color: black;
+    color: white; /* Change text color to white for better visibility */
+}
+
+
+    

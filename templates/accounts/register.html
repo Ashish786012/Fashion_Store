@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Register
+                </div>
+                <div class="card-body">
+                    {% include 'includes/alerts.html' %}
+                    <!-- Your registration form goes here -->
+                    <form method="post" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label>First name</label>
+                                  {{ form.first_name }}
+                            </div> <!-- form-group end.// -->
+                            <div class="col form-group">
+                                <label>Last name</label>
+                                  {{ form.last_name }}
+                            </div> <!-- form-group end.// -->
+                        </div> <!-- form-row end.// -->
+        
+        
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label>Email Address</label>
+                              {{form.email}}
+                            </div> <!-- form-group end.// -->
+                            <div class="form-group col-md-6">
+                              <label>Phone Number</label>
+                              {{form.phone_number}}
+                            </div> <!-- form-group end.// -->
+                        </div> <!-- form-row.// -->
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Create password</label>
+                                {{ form.password }}
+                            </div> <!-- form-group end.// -->
+                            <div class="form-group col-md-6">
+                                <label>Repeat password</label>
+                    {{form.confirm_password}}
+                            </div> <!-- form-group end.// -->
+                        </div>
+                        <button type="submit" class="primary-btn btn-block">Register</button>
+
+                    </form>
+                    <!-- End of registration form -->
+                    {{ form.email.errors }}
+                    {{ form.non_field_errors }}
+                </div>
+                
+                <div class="card-footer">
+                    <p>Already have an account? <a href="{% url 'login' %}" style="color: black; text-decoration: none;">Login here</a></p>
+                </div>
+           
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery (Make sure to include them before the closing </body> tag) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if request.GET.command == 'verification' %}
+
+<div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px;">
+Thank you for registering with us. We have sent you a verification email to your email address [{{ request.GET.email }}]
+<br><br>
+Already verified? <a href="{% url 'login' %}">Login</a>
+</div>
+
+{% else %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Login
+                </div>
+                <div class="card-body">
+                    {% include 'includes/alerts.html' %}
+                    <!-- Your login form goes here -->
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="Email">Email:</label>
+                            <input type="email" class="form-control"  name="email" placeholder="Email Address" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" name="password"required>
+                        </div>
+                        <div class="form-group">
+                            <a href="{% url 'forgotPassword' %}" class="float-right">Forgot password?</a>
+              
+                        </div>
+                        <button type="submit" class="primary-btn btn-block">Login</button>
+                    </form>
+                    <!-- End of login form -->
+                </div>
+                <div class="card-footer">
+                    <h6>Don't have an account? <a href="{% url 'register' %}" class="black-link">Register here</a></h6>
+
+                <style>
+                    .black-link {
+                    color: black;
+                    text-decoration: none; /* Remove underline */
+                }
+
+                .black-link:hover {
+                    text-decoration: none; /* Remove underline on hover */
+                    color: black; /* You can also specify the color on hover if needed */
+                }
+
+                </style>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery (Make sure to include them before the closing </body> tag) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+{% endif %}
+{% endblock %}
